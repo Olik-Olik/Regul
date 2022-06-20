@@ -9,14 +9,14 @@
           <v-img
             min-width="224px"
             max-width="260px"
-            lazy-src="/1.jpg"
-            src="/1.jpg"
+            lazy-src="/2.jpg"
+            src="/2.jpg"
             class="rounded-lg"
           ></v-img>
         </v-col>
         <v-col class="pb-0 d-flex align-end flex-column">
           <v-card-subtitle
-            class="align-self-start text--secondary text-caption text-uppercase pa-0"
+            class="align-self-start text--secondary text-caption  pa-0"
             >{{ value.type.title }}</v-card-subtitle
           >
           <v-card-title
@@ -28,15 +28,24 @@
           <v-card-text class="mt-1 grow">
             <v-row>
               <span class="mr-4">
-                <v-icon color="primary">mdi-account-supervisor-outline</v-icon>
-                До {{ maxGuests | word_case(['гостя', 'гостей', 'гостей']) }}
+                <v-icon color="primary"></v-icon>
+                {{ maxGuests | word_case(['гость', 'гостя', 'гостя']) }}
               </span>
-              <span class="mr-4">
-                <v-icon color="accent">mdi-door-open</v-icon>
+<!--              <span class="mr-4">
+                <v-icon color="accent"></v-icon>
                 {{ rooms | word_case(['комната', 'комнаты', 'комнат']) }}
+              </span>-->
+              <span class="mr-4">
+                <v-icon color="accent"></v-icon>
+                {{ rooms | word_case(['кровать', 'кровати', 'кроватей']) }}
               </span>
               <span class="mr-4">
-                <v-icon>mdi-hammer-sickle</v-icon>
+                <v-icon color="accent"></v-icon>
+                {{ rooms | word_case(['спальня', 'спальни', 'спален']) }}
+              </span>
+              <span class="mr-4">
+                <v-icon></v-icon>
+
                 {{ square }} м<sup>2</sup>
               </span>
             </v-row>
@@ -69,11 +78,11 @@
                 size="14"
               ></v-rating>
               <div class="grey--text text-caption">
-                {{ value.rating.value }} ({{ value.reviews.count }})
+                {{ value.rating.value }} ({{ value.reviews.count }} отзывов)
               </div>
             </v-flex>
             <v-flex class="text--darken-2 text--secondary text-h6 text-right">
-              <span>{{ value.price | currency }}</span>
+              <span>{{ value.price }}</span>
             </v-flex>
           </v-card-actions>
         </v-col>
@@ -97,7 +106,7 @@
       >
       </v-img>
       <v-card-subtitle
-        class="text--secondary text-caption text-uppercase pt-1 pb-0"
+        class="text--secondary text-caption  pt-1 pb-0"
         >{{ value.type.title }}</v-card-subtitle
       >
       <v-card-title
@@ -110,7 +119,7 @@
         <v-row align="center" style="width: 90%">
           <v-rating
             :value="value.rating.value"
-            color="amber"
+            color="red"
             dense
             half-increments
             readonly
@@ -122,7 +131,7 @@
           <div
             class="text--darken-2 text--secondary text-h6 text-right ml-auto"
           >
-            <span>{{ value.price | currency }}</span>
+            <span>{{ value.price  }}</span>
           </div>
         </v-row>
       </v-card-text>
@@ -144,65 +153,63 @@ export default {
     },
     value: {
       type: Object,
-      default: () => ({
+      default: () => (
+        {
         id: '1',
-        title: 'Уютная однокомнатная халупа с видом на море  с видом на море',
-        price: 4500,
+        title: 'Уютная однокомнатная квартира с видом на море',
+
+
+          price: 'от 4500 ₽ / ночь',
         type: {
           id: 1,
           name: 'flat',
-          title: 'квартира',
+          title: 'Квартира',
         },
+
         params: [
           { id: '1', name: 'square', title: 'Площадь', value: '40' },
           { id: '2', name: 'rooms', title: 'Количество комнат', value: '2' },
+
           {
             id: '3',
             name: 'max_guests',
             title: 'Максимальное количество гостей',
-            value: '5',
+            value: '4',
           },
         ],
         options: [
           {
             id: '1',
             name: 'wifi',
-            title: 'Wi-Fi',
+            title: 'WI FI',
             order: 0,
             primary: true,
-            icon: 'mdi-access-point',
+            icon: 'mdi-wifi',
           },
           {
-            id: '2',
-            name: 'cond',
-            title: 'Кондиционер',
+            id: '9',
+            name: 'pets',
+            title: 'Pets friendly',
             order: 1,
             primary: true,
-            icon: 'mdi-cloud-refresh',
+            icon: 'mdi-waves',
           },
           {
-            id: '3',
+            id: '10',
             name: 'stir',
-            title: 'Стиральная машина',
-            order: 2,
+            title: 'Бесплатная отмена',
+            order: 1,
             primary: true,
-            icon: 'mdi-compass-rose',
+            icon: 'mdi-check',
           },
-          {
-            id: '4',
-            name: 'utug',
-            title: 'Утюг',
-            order: 3,
-            primary: true,
-            icon: 'mdi-toilet',
-          },
+
         ],
         rating: {
-          value: 3.5,
+          value: 4.75,
           detail: {},
         },
         reviews: {
-          count: 0,
+          count: 8,
           list: [],
         },
       }),

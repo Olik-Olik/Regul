@@ -11,11 +11,39 @@
       multiple
       chips
       deletable-chips
-      label="Тип жилья"
+      rounded
+      label="Тип жилья "
       item-text="title"
       item-value="id"
       class="full_search__panel__select--house-types"
     >
+    </v-select>
+      <v-select
+        v-model="filters.houseType"
+        :items="houseTypes"
+        multiple
+        chips
+        deletable-chips
+        rounded
+        label="Тип аренды "
+        item-text="title"
+        item-value="id"
+        class="full_search__panel__select--house-types"
+      >
+      </v-select>
+        <v-select
+          v-model="filters.houseType"
+          :items="houseTypes"
+          multiple
+          chips
+          deletable-chips
+          rounded
+          label="Цена "
+          item-text="title"
+          item-value="id"
+          class="full_search__panel__select--house-types"
+        >
+        </v-select>
       <!--      <template v-slot:selection="{ item, index }">-->
       <!--        <v-chip v-if="index < 2">-->
       <!--          <span>{{ item.title }}</span>-->
@@ -34,6 +62,7 @@
         v-show="item.primary"
         :key="item.id"
         filter
+
         outlined
         :value="item.id"
         >{{ item.title }}</v-chip
@@ -59,12 +88,14 @@
           <v-badge
             :content="filterCount"
             :value="filterCount"
-            color="primary"
-            overlap
+            small
+            outlined
+            rounded
+            color="secondary"
             offset-x="8"
             offset-y="5"
-          >
-            <v-icon>mdi-format-list-bulleted-square</v-icon>
+          >Все фильтры
+            <v-icon>mdi-dots-vertical</v-icon>
           </v-badge>
         </v-btn>
       </template>
@@ -191,57 +222,15 @@ export default {
         { id: '44', name: 'hostel', title: 'Хостел', icon: 'mdi-sofa-outline' },
       ],
       optionsList: [
-        { id: '1', name: 'wifi', title: 'Wi-Fi', order: -1, primary: true },
-        { id: '9', name: 'kam', title: 'Камин', order: 0, primary: true },
-        {
-          id: '2',
-          name: 'cond',
-          title: 'Кондиционер',
-          order: 1,
-          primary: true,
-        },
-        {
-          id: '3',
-          name: 'stir',
-          title: 'Стиральная машина',
-          order: 2,
-          primary: false,
-        },
-        { id: '4', name: 'utug', title: 'Утюг', order: 3, primary: true },
-        { id: '5', name: 'fen', title: 'Фен', order: 4, primary: true },
-        { id: '6', name: 'kuh', title: 'Кухня', order: 5, primary: true },
-        { id: '7', name: 'tele', title: 'Телевизор', order: 6, primary: false },
-        { id: '8', name: 'dza', title: 'Джакузи', order: 7, primary: false },
-      ],
-      rules: [
-        {
-          id: '1',
-          name: 'smoking',
-          title: 'Можно курить',
-          order: 0,
-          primary: true,
-        },
-        {
-          id: '2',
-          name: 'smoking',
-          title: 'Можно курить на балконе',
-          order: 2,
-          primary: true,
-        },
-        {
-          id: '3',
-          name: 'cats',
-          title: 'Можно с животными',
-          order: 3,
-          primary: true,
-        },
-        {
-          id: '4',
-          name: 'buhlo',
-          title: 'Можно бухать',
-          order: 4,
-          primary: true,
-        },
+        { id: '11', name: 'free', title: 'Бесплатная отмена', order: 10, primary: true },
+        { id: '12', name: 'yes', title: 'Мгновенное подтверждение', order: 11, primary: true },
+        { id: '13', name: 'master', title: 'Суперхозяин', order: 12, primary: true },
+        { id: '14', name: 'fire', title: 'Горящее предложение', order: 13, primary: true },
+        { id: '15', name: 'else', title: 'Что-то ещё', order: 14, primary: true },
+        { id: '16', name: 'elsemore', title: 'И ещё что-нибудь', order: 15, primary: true },
+        { id: '17', name: 'elsemorelonge', title: 'И ещё что-то длинное длинное', order: 16, primary: true },
+        { id: '18', name: 'prepay', title:  'Предоплата', order: 17, primary: false },
+        { id: '19', name: 'variant', title:  'Несколько вариантов питания', order: 18, primary: false },
       ],
       filters: {
         houseType: [],
@@ -268,7 +257,7 @@ export default {
 <style scoped>
 .full_search__panel__select--house-types {
   max-width: 450px;
-  /*width: 25%;*/
+
 }
 .advanced_filters__v-chip.advanced_filters__house_type {
   width: 150px;

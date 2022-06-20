@@ -177,7 +177,7 @@
                 hide-details
                 single-line
                 outlined
-                max="5"
+                max="4"
                 min="0"
                 type="number"
                 class="col-4"
