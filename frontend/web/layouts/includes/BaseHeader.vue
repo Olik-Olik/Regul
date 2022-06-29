@@ -15,10 +15,10 @@
       short
     ></small-search-form>
     <v-spacer />
-    <v-btn color="#00ACA2" width=" 186" filled rounded solo outlined plain raised text class="mr-md-2"
+    <v-btn color="#00ACA2"  filled rounded solo outlined plain raised text class="mr-md-2"
       >Вход</v-btn
     >
-    <v-btn color="#00ACA2" outlined plain raised rounded text>Регистрация</v-btn>
+    <v-btn color="#00ACA2"  outlined plain raised rounded text>Регистрация</v-btn>
   </v-app-bar>
 </template>
 
